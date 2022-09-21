@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Hind:400|Expletus+Sans:400");
+
+:root {
+  --color-text1: #483838;
+  --color-text2: #4C0033;
+  --color-secondary: #21b996;
+  --color-btn: #319DA0;
+  --color-btn-hover: #937DC2;
+
+  --border-radius: 0.25rem;
+  --letter-spacing: 1px;
+  --max-width: 90vw;
+  --fixed-width: 600px;
+  --shadow: 5px 5px 10px rgba(55, 94, 148, 0.2);
+  --hover-shadow: inset 5px 3px 5px rgba(0, 0, 0, 0.125);
+  --transition: all 0.3s ease-in-out;
+
+  /* fonts */
+  --heading-font: "Expletus Sans", sans-serif;
+  --body-font: "Hind", sans-serif;
+}
+
+body {
+  font-family: var(--body-font);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-text2);
+  background-color: var(--color-btn-hover);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+h1,
+h2 {
+  margin: 1rem 0 1.38rem;
+  font-family: var(--heading-font);
+  font-weight: 400;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/*? buttons */
+a,
+.btnFirst,
+.btnSecond {
+  cursor: pointer;
+  color: white;
+  background-color: darkolivegreen;
+  border: transparent;
+  border-radius: var(--border-radius);
+  letter-spacing: var(--letter-spacing);
+  padding: 0.375rem 0.75rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.btnSecond {
+  background-color: var(--color-text1);
+}
+
+.btnFirst:hover {
+  box-shadow: var(--hover-shadow);
+  background-color: #EBC7E8;
+  color: black;
+}
+
+.btnDanger {
+  background-color: salmon;
+  padding: 0 0.2rem;
+}
+
+a,
+.btnDanger,
+.btnSecond:hover {
+  background-color: orangered;
+  box-shadow: var(--hover-shadow);
+}
+
+/* *--------------------------------------------- */
+
+/*? Form */
+.form {
+  margin: 0 auto;
+  width: 500px;
+  max-width: var(--max-width);
+  height: 500px;
+  border: solid red 1.3px;
+  display: grid;
+  align-items: center;
+  align-content: space-evenly;
+
+}
+
+.form-group {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  letter-spacing: var(--letter-spacing);
+  color: #000000;
+}
+
+small {
+  font-size: 0.7rem;
+  margin-left: 0.5rem;
+  color: var(--color-text1);
+}
+
+.inputData {
+  height: 2rem;
+  border-radius: var(--border-radius);
+  background-color: #554994;
+  color: #ffffff;
+  font-size: 1.3rem;
+}
+
+.inputData::placeholder {
+  color: var(--color-btn-hover);
+  font-size: 0.9rem;
+  padding: 0.5rem;
+}
+
+.espace {
+  margin-top: 1rem;
+}
+
+/** Container */
+.container {
+  margin: 0 auto;
+  width: 700px;
+  max-width: var(--max-width);
+  letter-spacing: var(--letter-spacing);
+}
+
+/* * Page Index */
+.pageIndex {
+  display: grid;
+  grid-auto-rows: 200px 100px 200px;
+  align-content: space-around;
+  justify-items: center;
+  align-items: center;
+}
+
+/* * Page SignUp */
+.container-btns {
+  margin: 0 auto;
+}
+
+.container-btns button {
+  font-size: 1.3rem;
+}
+
+/* * Page Login */
+.login {
+  display: grid;
+  column-gap: 1rem;
+}
+
+.linkQuitter {
+  margin: 1rem auto;
+}
+
+/* * Page App */
+.form-app {
+  text-align: center;
+}
+
+.form-app .form-group {
+  border: solid red 1.3px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 0.4rem;
+}
+
+@media screen and (max-width: 500px) {
+  .form-app .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.container-task {
+  border: solid yellow 1.3px;
+  max-width: var(--max-width);
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 10px;
+  justify-content: center;
+}
+
+.container-task .listBtn {
+  display: grid;
+  column-gap: 5px;
+  grid-row: 1/2;
+  grid-column: 2/3;
+  grid-template-columns: auto 1fr;
+  align-content: center;
+  justify-self: end;
+}
+
+.listBtn .btn-edit,
+.btn-delete {
+  background-color: transparent;
+  font-size: 1.2rem;
+}
+
+.listBtn .btn-edit i {
+  color: var(--color-secondary);
+}
+
+.listBtn .btn-delete i {
+  color: red;
+}
+
+.seDeconecter {
+  margin: 0 auto;
+  text-align: center;
+}
