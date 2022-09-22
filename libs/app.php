@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION["user_id"])) {
-    die("<div class=\"alert alert-danger\"> <span style='font-size:100px;'> &#x26d4;</span> <p> Accés refusé ! <br> <br> veuillez <a href=\"./login.php\">vous connectez</a> ou <a href=\"./signUp.php\">enregistrez vous</a>  <br> <br> pour utiliser cette application</p></div>");
+    die("<div style='text-align: center; position: absolute;left: 50%;top: 50%;transform:translate(-50%,-50%);'> <span style='font-size:100px;'> &#x26d4;</span> <p> Accés refusé ! <br> <br> veuillez <a href=\"./login.php\">vous connectez</a> ou <a href=\"./signUp.php\">enregistrez vous</a>  <br> <br> pour utiliser cette application</p></div>");
 }
 
 require_once 'pdo.php';
@@ -71,28 +71,28 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="container">
         <h1 class="">To Do App <br> of <?php echo $_SESSION["user_id"] ?></h1>
-
+        <div class="underline"></div>
         <form class="form-app" action="app.php" method="POST">
             <div>
                 <p>
 
                     <?php if (isset($_SESSION['flash_message'])) {
                         $message = $_SESSION['flash_message'];
-                        echo  "<div class='text-center alert alertSuccess' role='alert'> $message </div>";
+                        echo  "<div class='success' role='alert'> $message </div>";
                         unset($_SESSION['flash_message']);
                     } ?>
                     <?php if (isset($_SESSION['success'])) {
-                        echo  "<div class='text-center alert alertSuccess' role='alert'> {$_SESSION['success']}  </div>";
+                        echo  "<div class='success' role='alert'> {$_SESSION['success']}  </div>";
                         unset($_SESSION['success']);
                     } ?>
                     <?php if (isset($_SESSION["success"])) {
                         $message = $_SESSION["success"];
-                        echo  "<div class='text-center alert alertSuccess' role='alert'> $message </div>";
+                        echo  "<div class='success' role='alert'> $message </div>";
                         unset($_SESSION["success"]);
                     } ?>
                     <?php if (isset($_SESSION["warning"])) {
                         $message = $_SESSION["warning"];
-                        echo  "<div class='text-center alert alert-warning' role='alert'> $message </div>";
+                        echo  "<div class='error-in-app' role='alert'> $message </div>";
                         unset($_SESSION["warning"]);
                     } ?>
                 </p>

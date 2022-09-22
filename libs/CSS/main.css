@@ -32,7 +32,7 @@ body {
   line-height: 1.75;
   color: var(--color-text2);
   /* background-color: var(--color-btn-hover); */
-  background-color: seagreen;
+  background-color: #b0b040;
 }
 
 p {
@@ -57,8 +57,45 @@ ul {
   padding: 0;
 }
 
+.underline {
+  background-color: var(--color-text2);
+  width: 10rem;
+  height: 0.25rem;
+  margin: 0 auto;
+}
+
+/* ! Alert */
+.error {
+  padding: 0.3rem;
+  margin: 0 auto;
+  width: fit-content;
+  background-color: darkred;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.error-in-app {
+  background-color: #ffc107;
+  color: #091242;
+  font-weight: bold;
+  border-radius: 20% 10%;
+}
+
+.success {
+  background-color: #4caf50;
+  color: black;
+  border-radius: 20% 10%;
+}
+
+/* * Link Redirection in Alert */
 .link-redirection {
   padding: 0 0.2rem;
+  display: inline-block;
+}
+
+.link-redirection:hover {
+  background-color: green;
+  color: yellow;
 }
 
 /*? buttons */
@@ -162,6 +199,10 @@ small {
   align-content: space-around;
   justify-items: center;
   align-items: center;
+}
+
+.whiteHat {
+  text-align: center;
 }
 
 /* * Page SignUp */
@@ -296,11 +337,6 @@ table {
 
 .redirection-app {
   text-align: center;
-}
-
-.error {
-  background-color: darkred;
-  color: white;
 }
 
 .inputEditTask {

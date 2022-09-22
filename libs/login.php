@@ -30,7 +30,7 @@ if (isset($_POST['valider'])) {
                 return;
             }
         } else {
-            $_SESSION["message"] = "Email invalide, pour se connecter veuillez suivre ce lien <a class='link-redirection' href='./signUp.php'>SignUp</a>";
+            $_SESSION["message"] = "Email invalide, pour s'enregistrer veuillez suivre ce lien <a class='link-redirection' href='./signUp.php'>SignUp</a>";
             header("location: login.php");
             return;
         }
@@ -57,12 +57,18 @@ if (isset($_POST['valider'])) {
 <body>
     <div class="container">
         <h1>Se Connecter</h1>
-        <form class="form" method="POST">
-            <div class="form-group">
+        <div class="underline"></div>
+        <div class="form-group">
+            <p>
                 <?php if (isset($_SESSION['message'])) {
-                    echo  "<div class='text-center alert alert-danger' role='alert'> {$_SESSION['message']} </div>";
+                    echo  "<div class='error' role='alert'> {$_SESSION['message']} </div>";
                     unset($_SESSION['message']);
                 } ?>
+            </p>
+        </div>
+        <form class="form" method="POST">
+            <div class="form-group">
+
                 <label for="focusInputEmail">Adresse Electronique</label>
                 <input type="email" name="email" class="inputData" id="focusInputEmail" aria-describedby="emailHelp"
                     placeholder="Entez votre email">

@@ -79,7 +79,7 @@ $rows = $stmt->fetch(PDO::FETCH_ASSOC);
                 <p>
                     <?php if (isset($_SESSION["error"])) {
                         $message = $_SESSION["error"];
-                        echo  "<div class='error' role='alert'> $message </div>";
+                        echo  "<div class='error-in-app' role='alert'> $message </div>";
                         unset($_SESSION["error"]);
                     } ?>
                 </p>

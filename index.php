@@ -14,16 +14,17 @@
     <div class="container pageIndex">
 
 
-        <header class="title">
+        <header>
             <h1>Bienvenue <br> In Your TO_DO APPLICATION</h1>
+            <div class="underline"></div>
         </header>
         <section class="container-btns">
 
             <a href="./libs/signUp.php" class="btnSecond">Enregistrez Vous</a>
             <a href="./libs/login.php" class="btnFirst">Connectez Vous</a>
         </section>
-        <div>
-            <p class="title">Accès à la page >> <a class="btnDanger" href="./libs/app.php"> App </a>
+        <div class="whiteHat">
+            <p>Accès à la page >> <a class="btnDanger" href="./libs/app.php"> App </a>
                 << sans connexion. </p>
         </div>
 

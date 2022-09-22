@@ -24,15 +24,12 @@ if (isset($_POST["register"])) {
                 header("location: signUp.php");
                 return;
             } elseif ($user) {
-                $_SESSION["error"] = "Email déja utilisé, pour se connecter veuillez suivre ce lien <a class='btn btn-info btn-sm' href='./login.php'>Login</a>";
+                $_SESSION["error"] = "Email déja utilisé, pour se connecter veuillez suivre ce lien <a class='link-redirection' href='./login.php'>Login</a>";
                 header("location: signUp.php");
                 return;
             } else {
                 $codeVerify = htmlentities($_POST["pass"]);
                 $emailVerify = htmlentities($_POST["email"]);
-
-                // $codeVerify = ($_POST["pass"]);
-                // $emailVerify = ($_POST["email"]);
 
                 $sql = "INSERT INTO users (name,password) VALUE (:name, :password)";
                 $codeHash = hash("md5", "$salt" . "$codeVerify");
@@ -78,14 +75,16 @@ if (isset($_POST['quitter'])) {
 </head>
 
 <body>
-    <div class="container signUp">
-        <h2>Enregistrez Vous</h2>
+    <div class="container">
+        <h1>Enregistrez Vous</h1>
+        <div class="underline"></div>
         <div class="form-group">
-            <?php if (isset($_SESSION['error'])) {
-                $message = $_SESSION['error'];
-                echo "<div class='alert alert-danger' role='alert'>$message</div>";
-                unset($_SESSION['error']);
-            } ?>
+            <p>
+                <?php if (isset($_SESSION['error'])) {
+                    $message = $_SESSION['error'];
+                    echo "<div class='error' role='alert'>$message</div>";
+                    unset($_SESSION['error']);
+                } ?>
             </p>
         </div>
         <form class="form" action="./signUp.php" method="POST">
