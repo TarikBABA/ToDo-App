@@ -54,14 +54,14 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./CSS/main.css">
-    <script src="https://kit.fontawesome.com/daed954e81.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/daed954e81.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./CSS/main.css">
     <title>ToDo_App</title>
 </head>
 
@@ -98,15 +98,11 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </p>
             </div>
             <div class="form-group">
-                <!-- <div class="inputNewTask"> -->
                 <input type="text" class="inputData" placeholder="Ajoute une tâche" name="addTache">
-                <!-- </div> -->
-                <!-- <div class="btn-form"> -->
                 <button class="btnFirst" name="ajouter" type="submit">Ajouter</button>
-                <!-- </div> -->
             </div>
         </form>
-        <table border="true">
+        <table>
             <tbody>
                 <?php
                 foreach ($rows as $row) {

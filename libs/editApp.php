@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if (!isset($_SESSION["user_id"])) {
@@ -21,15 +22,6 @@ if (isset($_POST["edit"]) && isset($_POST['tacheModif'])) {
             return;
         } else {
 
-            // $sql = "UPDATE `tasks` SET `title` = :tacheModif WHERE `tasks`.`task_id` = :task_id";
-            // $stmt = $pdo->prepare($sql);
-            // $stmt->execute([
-            //     ":tacheModif" => htmlentities($_POST['tacheModif']),
-            //     ":task_id" => $_SESSION["task_id"],
-            // ]);
-
-            // $sql = "UPDATE `tasks` SET `title` = :tacheModif WHERE `tasks`.`task_id` = :task_id";
-
             $sql = "UPDATE `tasks` SET `title` = :tacheModif, `Date_De_Modification` = CURRENT_TIMESTAMP WHERE `tasks`.`task_id` = :task_id";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
@@ -45,7 +37,6 @@ if (isset($_POST["edit"]) && isset($_POST['tacheModif'])) {
     } else {
 
         $_SESSION['error'] = "Champs vide ! <span style='font-size:20px;'>&#128530;</span>";
-        // header("Location: editApp.php?todos_id=" . $_REQUEST['id']);
         header("Location: editApp.php");
         return;
     }
@@ -54,6 +45,7 @@ if (isset($_POST["edit"]) && isset($_POST['tacheModif'])) {
 $stmt = $pdo->prepare("SELECT title FROM tasks WHERE user_id = :user_id");
 $stmt->execute([":user_id" => $_SESSION["user_id"]]);
 $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +53,6 @@ $rows = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="UTF-8">
-    <meta name="Application de Gestion des taches, Inscription gratuite">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/main.css">
