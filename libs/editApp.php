@@ -57,52 +57,45 @@ $rows = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="Application de Gestion des taches, Inscription gratuite">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./CSS/main.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/main.css">
     <title>Editer</title>
 </head>
 
 <body>
-    <div class="bgdc pt-5">
-        <form class="form" method="POST">
-            <div class="title text-center p-2">
+    <div class="container">
+        <form class="form-edit form-app" method="POST">
+            <div>
                 <h2>Éditer Une Tâche</h2>
             </div>
-            <p>
-                <?php if (isset($_SESSION["error"])) {
-                    $message = $_SESSION["error"];
-                    echo  "<div class='text-center alert alert-warning' role='alert'> $message </div>";
-                    unset($_SESSION["error"]);
-                } ?>
-            </p>
-            <div class="input-group m-3">
+            <div>
 
-                <input type="text" name="tacheModif" class="form-control" value="<?= $_SESSION["title"] ?>">
-                <div class="input-group-append">
-                    <input class="btn btn-info" name="edit" type="submit" value="Éditer"></input>
-                </div>
+                <p>
+                    <?php if (isset($_SESSION["error"])) {
+                        $message = $_SESSION["error"];
+                        echo  "<div class='error' role='alert'> $message </div>";
+                        unset($_SESSION["error"]);
+                    } ?>
+                </p>
+            </div>
+            <div class="form-group-edit">
+
+                <input type="text" name="tacheModif" class="inputEditTask" value="<?= $_SESSION["title"] ?>">
+
+                <input class="btnFirst" name="edit" type="submit" value="Éditer"></input>
+
             </div>
         </form>
-        <div class=" text-center">
-            <a href="./app.php" class="btn btn-outline-dark">Annuler</a>
+        <div class="redirection-app">
+            <a href="./app.php" class="btnSecond">Annuler</a>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

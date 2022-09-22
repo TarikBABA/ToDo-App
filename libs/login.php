@@ -4,7 +4,7 @@ session_start();
 include "pdo.php";
 require 'functions.php';
 
-$_SESSION['flash_message'] = "Bonjour et bienvenue dans votre espace privé <span style='font-size:20px;'>&#128521;</span>";
+$_SESSION['flash_message'] = "Bonjour et Bienvenue Dans Votre Espace Privé <span style='font-size:20px;'>&#128521;</span>";
 
 if (isset($_POST['valider'])) {
 
@@ -30,7 +30,7 @@ if (isset($_POST['valider'])) {
                 return;
             }
         } else {
-            $_SESSION["message"] = "Email invalide";
+            $_SESSION["message"] = "Email invalide, pour se connecter veuillez suivre ce lien <a class='link-redirection' href='./signUp.php'>SignUp</a>";
             header("location: login.php");
             return;
         }
@@ -66,8 +66,6 @@ if (isset($_POST['valider'])) {
                 <label for="focusInputEmail">Adresse Electronique</label>
                 <input type="email" name="email" class="inputData" id="focusInputEmail" aria-describedby="emailHelp"
                     placeholder="Entez votre email">
-                <small>Nous ne partagerons jamais votre E-mail avec qui que
-                    ce soit.</small>
             </div>
             <div class="form-group">
                 <label for="focusInputPassW">Mot de Passe</label>

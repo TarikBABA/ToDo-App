@@ -1,9 +1,10 @@
 <?php
+session_start();
+
 include "./pdo.php";
 
 require_once 'functions.php';
 
-$message = $_SESSION["message"] ?? false;
 
 if (isset($_POST["register"])) {
 
@@ -19,9 +20,13 @@ if (isset($_POST["register"])) {
             if (!preg_match(" /^.+@.+\.[a-zA-Z]{2,}$/ ", $_POST["email"])) {
                 $message =  "L'adresse E-mail est invalide";
             } elseif ($_POST["pass"] !== $_POST["confirmPass"]) {
-                $message = "Veuillez renseignez le même mot de passe dans les champs correspondants";
+                $_SESSION["error"] = "Veuillez renseignez le même mot de passe dans les champs correspondants";
+                header("location: signUp.php");
+                return;
             } elseif ($user) {
-                $message = "Email déja utilisé, pour se connecter veuillez suivre ce lien <a class='btn btn-info btn-sm' href='./login.php'>Login</a> ";
+                $_SESSION["error"] = "Email déja utilisé, pour se connecter veuillez suivre ce lien <a class='btn btn-info btn-sm' href='./login.php'>Login</a>";
+                header("location: signUp.php");
+                return;
             } else {
                 $codeVerify = htmlentities($_POST["pass"]);
                 $emailVerify = htmlentities($_POST["email"]);
@@ -44,7 +49,9 @@ if (isset($_POST["register"])) {
                 return;
             }
         } else {
-            $message = "l'email et le mot de passe sont requis, Merci de remplir tout les champs";
+            $_SESSION["error"] = "l'email et le mot de passe sont requis, Merci de remplir tout les champs";
+            header("location: signUp.php");
+            return;
         }
     }
 }
@@ -60,28 +67,29 @@ if (isset($_POST['quitter'])) {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/main.css">
-
     <title>S'enregistrer</title>
 </head>
 
 <body>
     <div class="container signUp">
         <h2>Enregistrez Vous</h2>
+        <div class="form-group">
+            <?php if (isset($_SESSION['error'])) {
+                $message = $_SESSION['error'];
+                echo "<div class='alert alert-danger' role='alert'>$message</div>";
+                unset($_SESSION['error']);
+            } ?>
+            </p>
+        </div>
         <form class="form" action="./signUp.php" method="POST">
             <div class="form-group">
-                <?php
-                if ($message !== false) {
-                    echo "<div class='alert alert-danger' role='alert'>$message</div>";
-                }
-                ?>
-                <!-- <div class="alert alert-danger" role="alert"><?php if ($message) echo $message ?></div> -->
                 <label for="focusInputEmail"> Adresse Electronique</label>
                 <input type="email" name="email" class="inputData" id="focusInputEmail" aria-describedby="emailHelp"
                     placeholder=" Entez votre email">
@@ -103,16 +111,6 @@ if (isset($_POST['quitter'])) {
             </div>
         </form>
     </div>
-
-    <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

@@ -66,30 +66,37 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+    <div class="seDeconecter">
+        <a type="submit" class="btnSecond" href="./logOut.php" name="quitter">Se deconnecter</a>
+    </div>
     <div class="container">
-
         <h1 class="">To Do App <br> of <?php echo $_SESSION["user_id"] ?></h1>
 
         <form class="form-app" action="app.php" method="POST">
-            <?php if (isset($_SESSION['flash_message'])) {
-                $message = $_SESSION['flash_message'];
-                echo  "<div class='text-center alert alertSuccess' role='alert'> $message </div>";
-                unset($_SESSION['flash_message']);
-            } ?>
-            <?php if (isset($_SESSION['success'])) {
-                echo  "<div class='text-center alert alertSuccess' role='alert'> {$_SESSION['success']}  </div>";
-                unset($_SESSION['success']);
-            } ?>
-            <?php if (isset($_SESSION["success"])) {
-                $message = $_SESSION["success"];
-                echo  "<div class='text-center alert alertSuccess' role='alert'> $message </div>";
-                unset($_SESSION["success"]);
-            } ?>
-            <?php if (isset($_SESSION["warning"])) {
-                $message = $_SESSION["warning"];
-                echo  "<div class='text-center alert alert-warning' role='alert'> $message </div>";
-                unset($_SESSION["warning"]);
-            } ?>
+            <div>
+                <p>
+
+                    <?php if (isset($_SESSION['flash_message'])) {
+                        $message = $_SESSION['flash_message'];
+                        echo  "<div class='text-center alert alertSuccess' role='alert'> $message </div>";
+                        unset($_SESSION['flash_message']);
+                    } ?>
+                    <?php if (isset($_SESSION['success'])) {
+                        echo  "<div class='text-center alert alertSuccess' role='alert'> {$_SESSION['success']}  </div>";
+                        unset($_SESSION['success']);
+                    } ?>
+                    <?php if (isset($_SESSION["success"])) {
+                        $message = $_SESSION["success"];
+                        echo  "<div class='text-center alert alertSuccess' role='alert'> $message </div>";
+                        unset($_SESSION["success"]);
+                    } ?>
+                    <?php if (isset($_SESSION["warning"])) {
+                        $message = $_SESSION["warning"];
+                        echo  "<div class='text-center alert alert-warning' role='alert'> $message </div>";
+                        unset($_SESSION["warning"]);
+                    } ?>
+                </p>
+            </div>
             <div class="form-group">
                 <!-- <div class="inputNewTask"> -->
                 <input type="text" class="inputData" placeholder="Ajoute une tâche" name="addTache">
@@ -99,37 +106,38 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <!-- </div> -->
             </div>
         </form>
-        <table border="true" class="list-tasks">
+        <table border="true">
             <tbody>
                 <?php
                 foreach ($rows as $row) {
-                    $tache = ' <tr>
+                    $tache = ' 
+                <tr>
+                
                 <div class="container-task">
-                    <p>' . $row['title'] . '</p>
+                <p class="align-self-end h6 ml-1">' . $row['title'] . '</p>
                             
-                    <form  action="app.php" method="POST">
-                    <input type="text" name="action" value="delete" hidden>
-                    <input type="text" value="' . $row['task_id'] . '" name="id" hidden>
-                    <div class="listBtn">
-                        <button class="btn-delete" name="delete"><i class="fa-solid fa-trash-can"></i></button>
-                        <div/>
-                        <input type="text" name="action" value="edit" hidden>
-                        <input type="text" value="' . $row['title'] . '" name="title"  hidden>
-                        <input type="text" value="' . $row['task_id'] . '" name="task_id"  hidden>
-                        <div class="listBtn">
-                        <button name="edit" class="btn-edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                        </div>    
-                    </form>
-                <div/>
-                </tr>
+                <div class="listBtn">
+                <form action="app.php" method="POST">
+                <input type="text" name="action" value="delete" hidden>
+                <input type="text" value="' . $row['task_id'] . '" name="id" hidden>
+                <button class="btn-delete" name="delete" title="Supprimer"><i class="fa-solid fa-trash"></i></button>
+                </form>
+                            
+                <form action="app.php" method="POST">
+                <input type="text" name="action" value="edit" hidden>
+                <input type="text" value="' . $row['title'] . '" name="title"  hidden>
+                <input type="text" value="' . $row['task_id'] . '" name="task_id"  hidden>
+                <button name="edit" class="btn-edit" title="Editer"><i class="fa-solid fa-pen-to-square"></i></button>
+                </form>
+                </div>
+                </div>  
+                <tr/>
                 ';
-                    echo $tache;
+                    echo "<div class='separateur'></div> $tache ";
                 } ?>
             </tbody>
         </table>
-        <div class="seDeconecter">
-            <button type="submit" class="btnSecond" href="./logOut.php" name="quitter">Se deconnecter</button>
-        </div>
+
     </div>
 </body>
 
