@@ -21,7 +21,7 @@ if (isset($_POST['valider'])) {
         if ($user) {
             if ($codeAfterHash == $user['password']) {
                 $_SESSION['user_id'] = $user['user_id'];
-
+                $_SESSION['name'] = $user['name'];
                 header("location: app.php");
                 return;
             } else {

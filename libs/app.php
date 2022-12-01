@@ -70,7 +70,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a type="submit" class="btnSecond" href="./logOut.php" name="quitter">Se deconnecter</a>
     </div>
     <div class="container">
-        <h1 class="">To Do App <br> of <?php echo $_SESSION["user_id"] ?></h1>
+        <h1 class="">To Do App <br> of <?php echo $_SESSION["name"] ?></h1>
         <div class="underline"></div>
         <form class="form-app" action="app.php" method="POST">
             <div>
